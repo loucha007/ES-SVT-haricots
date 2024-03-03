@@ -1,5 +1,5 @@
 from datetime import datetime, time
-import time as sleep
+from time import sleep
 from gpiozero import LED
 
 enceinte_1 = LED(26)
@@ -8,6 +8,7 @@ enceinte_3 = LED(13)
 enceinte_4 = LED(6)
 # La 5ème enceinte reste toujours allumée, elle n'est donc pas présente dans le programme
 
+status_led = LED(5)
 
 heure_allumage_enceintes = time(0, 0) # Les LED vont s'allumer à minuit
 heure_extinction_enceinte_1 = time(15, 0) # On paramètre les heures où les enceintes vont s'éteindre dans des instances time
@@ -37,12 +38,13 @@ def haricots():
         if temps_actuel >= heure_extinction_enceinte_4 and enceinte_4.value == 1:
             enceinte_4.off()
 
-        status() # on print le statut des variables
-            
-        sleep.sleep(10) # on "dort" 10 secondes pour ne pas surcharger le programme
+        status() # on print le statut des variables et on fait clignoter la led de statut
 
+         
+        sleep(10) # on "dort" 10 secondes pour ne pas surcharger le programme
 
-
+        status_led.off()
+        
         
 
 def status(): # la fonction "status" print l'état des 4 variables "enceinte" 
@@ -54,6 +56,9 @@ def status(): # la fonction "status" print l'état des 4 variables "enceinte"
     print(f"Enceinte 3 = {enceinte_3.value}")
     print(f"Enceinte 4 = {enceinte_4.value}")
     print("") # On saute une ligne pour que la console soit plus claire
+    status_led.on()
+    sleep(0.25)
+    status_led.off()
 
 
 haricots() # On lance le programme en appelant la fonction "haricots"
