@@ -15,10 +15,10 @@ heure_extinction_enceinte_3 = time(19, 30)
 heure_extinction_enceinte_4 = time(21, 45)
 
 def haricots():
-    global enceinte_1, enceinte_2, enceinte_3, enceinte_4 # on déclare les variables "enceinte" comme globales pour qu'elles soient utilisables dans la focntion
+    global enceinte_1, enceinte_2, enceinte_3, enceinte_4 # on déclare les variables "enceinte" comme globales pour qu'elles soient utilisables dans la fonction
     while True:
         temps_actuel = datetime.now().time()
-        if temps_actuel >= heure_allumage_enceintes and enceinte_1 == False: # lorsque l'enceinte est éteinte et qu'il est l'héure de l'allumer
+        if temps_actuel >= heure_allumage_enceintes and enceinte_1 == False: # lorsque l'enceinte est éteinte et qu'il est l'heure de l'allumer
             enceinte_1 = True
         if temps_actuel >= heure_allumage_enceintes and enceinte_2 == False:
             enceinte_2 = True
@@ -27,7 +27,7 @@ def haricots():
         if temps_actuel >= heure_allumage_enceintes and enceinte_4 == False:
             enceinte_4 = True
 
-        if temps_actuel >= heure_extinction_enceinte_1 and enceinte_1 == True: # lorsque l'enceinte est allumée et qu'il est l'héure de l'éteindre
+        if temps_actuel >= heure_extinction_enceinte_1 and enceinte_1 == True: # lorsque l'enceinte est allumée et qu'il est l'heure de l'éteindre
             enceinte_1 = False
         if temps_actuel >= heure_extinction_enceinte_2 and enceinte_2 == True:
             enceinte_2 = False
